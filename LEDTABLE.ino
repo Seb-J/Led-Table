@@ -16,7 +16,7 @@ void setup()
   randomSeed(analogRead(0) + 4564459);
 
   //Only works with an Arduino Due.
-  attachInterrupt(19, stop_activity, CHANGE);
+  attachInterrupt(19, serial_event, CHANGE);
 }
 
 
@@ -55,7 +55,7 @@ void set_color(coordinate* pixel, unsigned char red, unsigned char green, unsign
 }
 
 //TO BE TESTED
-void stop_activity()
+void serial_event()
 {
   while (Serial1.available() > 0)
   {
