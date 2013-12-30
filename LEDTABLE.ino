@@ -40,10 +40,6 @@ void loop()
 
 
 
-
-
-
-
 //Functions :
 
 void set_color(coordinate* pixel, unsigned char red, unsigned char green, unsigned char blue)
