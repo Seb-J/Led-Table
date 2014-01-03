@@ -17,6 +17,9 @@ void setup()
 
   //Only works with an Arduino Due.
   attachInterrupt(19, serial_event, CHANGE);
+  
+  activity = 3;//Text
+  message = {'H', 'E', 'L', 'L', 'O', '!', '\0'};
 }
 
 
@@ -31,6 +34,10 @@ void loop()
 
     case 2:
       random_activity();
+      break;
+
+    case 3:
+      text();
       break;
 
       //etc..
@@ -55,14 +62,14 @@ void serial_event()
 {
   while (Serial1.available() > 0)
   {
-    //Two byte should arrive :
-    //If the first byte is different from 0 the activity has to be changed.
-    //The second byte is for interactive games such as Snake
-    byte incoming_byte = Serial1.read();
-    if (incoming_byte != 0) activity = incoming_byte;
-    //Second byte
-    incoming_byte = Serial1.read();
-    action = incoming_byte;
+    //Several byte should arrive :
+    //The first is the activity number
+    //The others are the parameters
+    activity = Serial1.read();
+
+    if (activity ==  1) action = Serial1.read();
+
+    //etc..
   }
 
 }

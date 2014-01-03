@@ -3,6 +3,7 @@
 
 void snake();
 void random_activity();
+void text();
 
 
 #endif

@@ -27,10 +27,17 @@ void snake()
   while (activity == 1)
   {
     //Update the head position
-    if (directions[head.x][head.y] == UP) head.y = (head.y--) % 12;
-    if (directions[head.x][head.y] == DOWN) head.y = (head.y++) % 12;
-    if (directions[head.x][head.y] == RIGHT) head.x = (head.x++) % 8;
-    if (directions[head.x][head.y] == LEFT) head.x = (head.x--) % 8;
+    if (action == UP) head.y = (head.y--) % 12;
+    if (action == DOWN) head.y = (head.y++) % 12;
+    if (action == RIGHT) head.x = (head.x++) % 8;
+    if (action == LEFT) head.x = (head.x--) % 8;
+    
+    if (content[head.x][head.y] == SNAKE)
+    {
+      activity = 3;
+      message = {'G', 'A', 'M', 'E', ' ', 'O', 'V', 'E', 'R', '\0'};
+    }
+    
     if (content[head.x][head.y] == APPLE)
     {
       do //Find the new apple's position
@@ -90,4 +97,10 @@ void random_activity()
     }
     sendGSData();
   }
+}
+
+
+void text()
+{
+  //Not written yet
 }

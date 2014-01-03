@@ -17,6 +17,7 @@
 
 
 extern unsigned char activity;
+extern char message[20];
 extern unsigned char action;
 
 typedef struct coordinate coordinate;
